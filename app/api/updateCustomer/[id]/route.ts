@@ -24,9 +24,11 @@ export async function GET(req: Request) {
 }
 
 
-export async function PUT(request: Request, { params }: { params: { id: string }}) {
+export async function PUT(request: Request) {
   try {
-    const { id } = params;
+    // Extract the ID from the URL
+    const url = new URL(request.url);
+    const id = url.pathname.split('/').pop(); // Get the ID from the URL path
     const db = await connectToDB();
     const { name, age, gender, mobile, gmail } = await request.json();
 
