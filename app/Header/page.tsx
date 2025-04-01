@@ -35,7 +35,7 @@ function Header() {
   };
 
   return (
-    <AppBar position="static" sx={{ bgcolor: '#FFCFCF', borderRadius: '8px', color: '#23486A', boxShadow: 'none' }}>
+    <AppBar position="static" sx={{ bgcolor: '#DDEB9D', borderRadius: '8px', color: '#143D60', boxShadow: 'none' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
           {/* Left Section - Logo */}
@@ -43,17 +43,15 @@ function Header() {
             CUSTOMERS
           </Link>
 
-          {/* Center Section - Navigation Links */}
-          <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center', }}>
+          {/* Right Section - Navigation Links & User Menu */}
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Link href={'/'} style={{ paddingRight: '14px' }}>Home</Link>
             <Link href={'/About'} style={{ paddingRight: '14px' }}>About</Link>
-            <Link href={'/Contact'}>Contact</Link>
-          </Box>
-
-          {/* Right Section - User Menu */}
-          <Box sx={{ flexGrow: 0 }}>
+            <Link href={'/Contact'} style={{ paddingRight: '14px' }}>Contact</Link>
+            <Link href={'/AddCustomer'}>(+) Add Customer</Link>
+            
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, marginLeft: '14px' }}>
                 <Avatar alt="Remy Sharp" src="/favicon.ico" />
               </IconButton>
             </Tooltip>
