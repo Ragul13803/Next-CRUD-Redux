@@ -39,7 +39,7 @@ export default function Home() {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
-      <Typography variant="h4" style={{ padding: '40px 0px 0px 0px' }}>CUSTOMER LIST</Typography>
+      <Typography variant="h4" style={{ padding: '40px 0px 0px 0px', color: '#5F8B4C' }}>CUSTOMER LIST</Typography>
       <Box>
         <Button sx={{ ...ButtonStyle, bgcolor: 'green', width: 'fit-content', m: '10px' }} onClick={handleAdd}>
           (+) Add Customer
