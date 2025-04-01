@@ -13,9 +13,9 @@ export default function Home() {
   const { customers } = useAppSelector((state) => state.customer);
   const [loading, setLoading] = useState(true);
 
-  const handleAdd = () => {
-    router.push('/AddCustomer');
-  };
+  // const handleAdd = () => {
+  //   router.push('/AddCustomer');
+  // };
 
   const handleEdit = (id) => {
     router.push(`/UpdateCustomer/${id}`);
@@ -39,12 +39,7 @@ export default function Home() {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
-      <Typography variant="h4" style={{ padding: '40px 0px 0px 0px', color: '#5F8B4C' }}>CUSTOMER LIST</Typography>
-      <Box>
-        <Button sx={{ ...ButtonStyle, bgcolor: 'green', width: 'fit-content', m: '10px' }} onClick={handleAdd}>
-          (+) Add Customer
-        </Button>
-      </Box>
+      <Typography variant="h4" style={{ padding: '40px 0px 0px 0px', color: '#5F8B4C', fontStyle: 'italic' }}>Customer List</Typography>
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
         <TableContainer sx={{ borderRadius: "10px", boxShadow: 'none', width: '1200px', border: '1px solid #D1D1D1' }}>
           <Table>
