@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`} 
         style={{
-          backgroundImage: "url('/assets/Nature AI BG 2.jpg')",
+          backgroundImage: "url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdjRpYmQxdWQzNzh0bTZmNmJzOWZzZGtobmZtb2xlNHFqanFyYzJvOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JSCJORaPeVOj1ekgyi/giphy.gif')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
