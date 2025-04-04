@@ -44,7 +44,7 @@ export default function Home() {
         <TableContainer sx={{ borderRadius: "10px", boxShadow: 'none', width: '1200px', border: '1px solid #D1D1D1' }}>
           <Table>
             <TableHead>
-              <TableRow sx={{ backgroundColor: "#FFCFCF" }}>
+              <TableRow sx={{ backgroundColor: "#DDEB9D", color: '#143D60', }}>
                 <TableCell sx={{ borderRight: '1px solid #D1D1D1', textAlign: 'center' }}>S.NO</TableCell>
                 <TableCell sx={{ borderRight: '1px solid #D1D1D1', textAlign: 'center' }}>Name</TableCell>
                 <TableCell sx={{ borderRight: '1px solid #D1D1D1', textAlign: 'center' }}>Age</TableCell>
@@ -58,7 +58,7 @@ export default function Home() {
               {loading ? (
                 <TableRow>
                   <TableCell colSpan={7} sx={{ textAlign: 'center', padding: '16px' }}>
-                    <CircularProgress />
+                    <CircularProgress  sx={{ color: '#5F8B4C'}}/>
                   </TableCell>
                 </TableRow>
               ) : customers.length > 0 ? (
