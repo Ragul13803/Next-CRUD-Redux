@@ -23,7 +23,7 @@ export default function UpdateCustomer()  {
   const customerbyId = data.customer;
   console.log('customerbyId',customerbyId);
 
-  const [ newCustomer, setNewCustomer ] = useState<{name: string, age: number, gender: string, mobile: number, gmail: string}>({ name: '', age: 0, gender: '', mobile: 0, gmail: ''});
+  const [ newCustomer, setNewCustomer ] = useState<{name: string, age: number, gender: string, mobile: number, gmail: string}>({ name: '', age: null, gender: '', mobile: null, gmail: ''});
   
   const params = useParams();
   const customerId = params?.id; 
@@ -43,7 +43,7 @@ export default function UpdateCustomer()  {
       };
 
       await dispatch(updateCustomerbyId({id, data}));
-      setNewCustomer({ name: '', age: 0, gender: '', mobile: 0, gmail: ''});
+      setNewCustomer({ name: '', age: null, gender: '', mobile:null, gmail: ''});
       router.push('/')
     } catch (error) {
       console.error('Error updating customer:', error);
@@ -63,7 +63,7 @@ export default function UpdateCustomer()  {
     
   return (
     <Box sx={{display:'flex', justifyContent:'center', alignItems:'center',height:'90vh'}}>
-      <Box sx={{display:'flex', flexDirection:'column',p:'20px',justifyContent:'center', gap:'20px', width:'400px', bgcolor:"#FFCFCF", borderRadius:'10px'}}>
+      <Box sx={{display:'flex', flexDirection:'column',p:'20px',justifyContent:'center', gap:'20px', width:'400px', bgcolor:"#DDEB9D", borderRadius:'10px'}}>
           <Typography variant='h4' sx={{padding:'10px', textAlign:'center'}}>Update Customer</Typography>
           {labelData.map((item, index)=> (
             <Box key={index} style={{display:'flex', gap: item.label === "Age" ? "40px" :"20px", justifyContent:'space-around'}}>
