@@ -51,8 +51,37 @@ export default function AddCustomer()  {
                   <FormControl>
                     <RadioGroup value={newCustomer[item.key as keyof typeof newCustomer]} onChange={(e) => handleChange(item.key, e.target.value)}>
                       <Box sx={{display:'flex', mr:"40px"}}>
-                      <FormControlLabel value='Male' control={<Radio sx={{ color: '#143D60' }} />} label='Male' sx={{ color: '#143D60' }} />
-                      <FormControlLabel value='Female' control={<Radio sx={{ color: '#143D60' }} />} label='Female' sx={{ color: '#143D60' }} />
+<FormControlLabel 
+  value="Male" 
+  control={
+    <Radio 
+      sx={{
+        color: '#143D60', // Default color
+        '&.Mui-checked': {
+          color: '#143D60', // Color when selected
+        },
+      }} 
+    />
+  } 
+  label="Male" 
+  sx={{ color: '#143D60' }} // Label color
+/>
+<FormControlLabel 
+  value="Female" 
+  control={
+    <Radio 
+      sx={{
+        color: '#143D60', // Default color
+        '&.Mui-checked': {
+          color: '#143D60', // Color when selected
+        },
+      }} 
+    />
+  } 
+  label="Female" 
+  sx={{ color: '#143D60' }} // Label color
+/>
+
                       </Box>
                     </RadioGroup>
                   </FormControl>
