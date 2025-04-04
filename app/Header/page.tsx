@@ -39,16 +39,16 @@ function Header() {
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
           {/* Left Section - Logo */}
-          <Link href="/" style={{ fontWeight: 700, color: '#180161', textDecoration: 'none', fontSize: '20px' }}>
+          <Link href="/" style={{ fontWeight: 700, color: '#143D60', textDecoration: 'none', fontSize: '20px' }}>
             CUSTOMERS
           </Link>
 
           {/* Right Section - Navigation Links & User Menu */}
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Link href={'/'} style={{ paddingRight: '14px' }}>Home</Link>
-            <Link href={'/About'} style={{ paddingRight: '14px' }}>About</Link>
-            <Link href={'/Contact'} style={{ paddingRight: '14px' }}>Contact</Link>
-            <Link href={'/AddCustomer'}>(+) Add Customer</Link>
+            <Link href={'/'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>Home</Link>
+            <Link href={'/About'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>About</Link>
+            <Link href={'/Contact'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>Contact</Link>
+            <Link href={'/AddCustomer'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>(+) Add Customer</Link>
             
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, marginLeft: '14px' }}>
