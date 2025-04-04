@@ -41,7 +41,7 @@ export default function AddCustomer()  {
   
   return (
     <Box sx={{display:'flex', justifyContent:'center', alignItems:'center',height:'90vh'}}>
-      <Box sx={{display:'flex', flexDirection:'column',p:'20px',justifyContent:'center', gap:'20px', width:'400px', bgcolor:"#DDEB9D", borderRadius:'10px'}}>
+      <Box sx={{display:'flex', flexDirection:'column',p:'20px',justifyContent:'center', gap:'20px', width:'400px', bgcolor:"#DDEB9D", color: '#143D60', borderRadius:'10px'}}>
           <Typography variant='h4' sx={{padding:'10px', textAlign:'center'}}>Add Customer</Typography>
           {data.map((item, index)=> (
             <Box key={index} style={{display:'flex', gap: item.label === "Age" ? "40px" :"20px", justifyContent:'space-around'}}>
