@@ -51,8 +51,8 @@ export default function AddCustomer()  {
                   <FormControl>
                     <RadioGroup value={newCustomer[item.key as keyof typeof newCustomer]} onChange={(e) => handleChange(item.key, e.target.value)}>
                       <Box sx={{display:'flex', mr:"40px"}}>
-                      <FormControlLabel value='Male' control={<Radio />} label='Male' />
-                      <FormControlLabel value='Female' control={<Radio />} label='Female' />
+                      <FormControlLabel value='Male' control={<Radio />} label='Male' sx={{ color: '#143D60' }} />
+                      <FormControlLabel value='Female' control={<Radio />} label='Female' sx={{ color: '#143D60' }} />
                       </Box>
                     </RadioGroup>
                   </FormControl>
