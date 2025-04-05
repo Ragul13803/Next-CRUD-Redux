@@ -11,27 +11,30 @@ import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import Link from 'next/link';
+import MenuIcon from '@mui/icons-material/Menu';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import Divider from '@mui/material/Divider';
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['Home', 'About', 'Contact', '(+) Add Customer'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Header() {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const toggleDrawer = (open: boolean) => () => {
+    setDrawerOpen(open);
   };
 
   return (
@@ -43,13 +46,31 @@ function Header() {
             CUSTOMERS
           </Link>
 
+          {/* Mobile Menu Icon */}
+          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+            <IconButton onClick={toggleDrawer(true)} sx={{ color: '#143D60' }}>
+              <MenuIcon />
+            </IconButton>
+            <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
+              <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
+                <List>
+                  {pages.map((page, index) => (
+                    <ListItem button key={page} component={Link} href={`/${page === 'Home' ? '' : page}`.replace(/\s+/g, '')}>
+                      <ListItemText primary={page} />
+                    </ListItem>
+                  ))}
+                </List>
+              </Box>
+            </Drawer>
+          </Box>
+
           {/* Right Section - Navigation Links & User Menu */}
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
             <Link href={'/'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>Home</Link>
             <Link href={'/About'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>About</Link>
             <Link href={'/Contact'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>Contact</Link>
             <Link href={'/AddCustomer'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>(+) Add Customer</Link>
-            
+
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, marginLeft: '14px' }}>
                 <Avatar alt="Remy Sharp" src="/favicon.ico" />
@@ -77,4 +98,5 @@ function Header() {
     </AppBar>
   );
 }
+
 export default Header;
