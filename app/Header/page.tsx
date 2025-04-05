@@ -17,6 +17,12 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import Image from 'next/image';
+import NextLink from 'next/link';
+import { forwardRef } from 'react';
+
+const ListItemLink = forwardRef(function ListItemLink(props: any, ref: React.Ref<HTMLAnchorElement>) {
+  return <NextLink ref={ref} {...props} />;
+});
 
 const pages = ['Home', 'About', 'Contact', '(+) Add Customer'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -54,12 +60,18 @@ function Header() {
             <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
               <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
                 <List>
-                  {pages.map((page, index) => (
-                    <ListItem button key={page} component={Link} href={`/${page === 'Home' ? '' : page}`.replace(/\s+/g, '')}>
-                      <ListItemText primary={page} />
-                    </ListItem>
-                  ))}
-                </List>
+  {pages.map((page) => (
+    <ListItem 
+      button 
+      key={page} 
+      component={ListItemLink} 
+      href={`/${page === 'Home' ? '' : page}`.replace(/\s+/g, '')}
+    >
+      <ListItemText primary={page} />
+    </ListItem>
+  ))}
+</List>
+
               </Box>
             </Drawer>
           </Box>
