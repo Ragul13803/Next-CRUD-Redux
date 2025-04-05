@@ -80,7 +80,7 @@ export default function Home() {
                 ))
               ) : (
                 <TableRow>
-                  <TableCell colSpan={7} sx={{ textAlign: 'center', padding: '16px', fontSize: '16px', fontWeight: 'bold', color: 'red' }}>
+                  <TableCell colSpan={7} sx={{ textAlign: 'center', padding: '16px', fontSize: '16px', fontWeight: 'bold', color: '#5F8B4C' }}>
                     No Customers Available
                   </TableCell>
                 </TableRow>
