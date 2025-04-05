@@ -17,6 +17,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
+import Image from 'next/image';
 
 const pages = ['Home', 'About', 'Contact', '(+) Add Customer'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -48,8 +49,8 @@ function Header() {
 
           {/* Mobile Menu Icon */}
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <IconButton onClick={toggleDrawer(true)} sx={{ color: '#143D60' }}>
-              <MenuIcon />
+            <IconButton onClick={toggleDrawer(true)} sx={{ color: '#143D60', p: 0 }}>
+              <Image src="/menu.svg" alt="Menu" width={32} height={32} />
             </IconButton>
             <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
               <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
