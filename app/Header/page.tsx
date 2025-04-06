@@ -23,7 +23,7 @@ const ListItemLink = forwardRef(function ListItemLink(props: any, ref: React.Ref
 });
 
 const pages = ['Home', 'About', 'Contact', 'AddCustomer'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Profile', 'Logout'];
 
 function Header() {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
@@ -114,7 +114,7 @@ function Header() {
         {/* Drawer for mobile navigation */}
         <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
           <Box
-            sx={{ width: 250 }}
+            sx={{ width: 180, bgcolor: '#DDEB9D', color: '#143D60', }}
             role="presentation"
             onClick={toggleDrawer(false)}
           >
