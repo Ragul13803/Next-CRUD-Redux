@@ -41,12 +41,21 @@ export default function Home() {
 
       {loading ? (
         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '40vh' }}>
-          <CircularProgress sx={{ color: '#5F8B4C' }} />
+          <CircularProgress sx={{ color: '#5F8B4C' }} /> 
+          <Typography variant="h4">Loading...</Typography>
         </Box>
       ) : customers.length > 0 ? (
         <Grid container spacing={3}>
           {customers.map((item, index) => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+              <Card sx={{ border: '1px solid #D1D1D1', borderRadius: '16px', padding: 2 }}>
+                <CardContent>
+                  <Box sx={{ display: 'flex', flexDirection: 'column', }}>
+                    (+)
+                    <Typography variant="h6">Add Customer</Typography>
+                  </Box>
+                </CardContent>
+              </Card>
               <Card sx={{ border: '1px solid #D1D1D1', borderRadius: '16px', padding: 2 }}>
                 <CardContent>
                   <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#143D60' }}>
