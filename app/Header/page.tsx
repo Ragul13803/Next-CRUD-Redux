@@ -1,4 +1,4 @@
-'use client'; 
+'use client';
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -44,39 +44,60 @@ function Header() {
   };
 
   return (
-    <AppBar position="static" sx={{ bgcolor: '#DDEB9D', borderRadius: '8px', color: '#143D60', boxShadow: 'none' }}>
+    <AppBar
+      position="static"
+      sx={{
+        bgcolor: '#DDEB9D',
+        borderRadius: '8px',
+        color: '#143D60',
+        boxShadow: 'none',
+      }}
+    >
       <Container maxWidth="xl">
-        <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
-          {/* Left Section - Logo */}
-          <Link href="/" style={{ fontWeight: 700, color: '#143D60', textDecoration: 'none', fontSize: '20px' }}>
+        <Toolbar disableGutters sx={{ justifyContent: 'space-between', width: '100%' }}>
+          {/* Mobile/Tablet Menu Icon - Left Side */}
+          <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center', mr: 2 }}>
+            <IconButton onClick={toggleDrawer(true)} sx={{ color: '#143D60', p: 0 }}>
+              Menu
+            </IconButton>
+          </Box>
+
+          {/* Logo */}
+          <Link
+            href="/"
+            style={{
+              fontWeight: 700,
+              color: '#143D60',
+              textDecoration: 'none',
+              fontSize: '20px',
+            }}
+          >
             CUSTOMERS
           </Link>
 
-          {/* Mobile Menu Icon */}
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <IconButton onClick={toggleDrawer(true)} sx={{ color: '#143D60', p: 0 }}>
-              <Image src="/menu.svg" alt="Menu" width={32} height={32} />
-            </IconButton>
-            <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
-              <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
-                <List>
-  {pages.map((page) => (
-    <ListItem 
-      button 
-      key={page} 
-      component={ListItemLink} 
-      href={`/${page === 'Home' ? '' : page}`.replace(/\s+/g, '')}
-    >
-      <ListItemText primary={page} />
-    </ListItem>
-  ))}
-</List>
+          {/* Mobile Drawer */}
+          <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
+            <Box
+              sx={{ width: 250 }}
+              role="presentation"
+              onClick={toggleDrawer(false)}
+            >
+              <List>
+                {pages.map((page) => (
+                  <ListItem
+                    button
+                    key={page}
+                    component={ListItemLink}
+                    href={`/${page === 'Home' ? '' : page}`.replace(/\s+/g, '')}
+                  >
+                    <ListItemText primary={page} />
+                  </ListItem>
+                ))}
+              </List>
+            </Box>
+          </Drawer>
 
-              </Box>
-            </Drawer>
-          </Box>
-
-          {/* Right Section - Navigation Links & User Menu */}
+          {/* Right Section - Desktop Only */}
           <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
             <Link href={'/'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>Home</Link>
             <Link href={'/About'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>About</Link>
