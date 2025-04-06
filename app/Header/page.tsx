@@ -53,12 +53,12 @@ function Header() {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ justifyContent: 'space-between', width: '100%' }}>
-          {/* Left side: Menu + CUSTOMERS for mobile/tablet and full nav for desktop */}
+          {/* Left side: Menu + CUSTOMERS */}
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             {/* Mobile/Tablet Menu Button */}
             <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center', mr: 1 }}>
               <IconButton onClick={toggleDrawer(true)} sx={{ color: '#143D60', p: 0 }}>
-               ≡ Menu
+                ≡
               </IconButton>
             </Box>
 
@@ -74,18 +74,19 @@ function Header() {
             >
               CUSTOMERS
             </Link>
+          </Box>
 
+          {/* Right side: Desktop Nav + Avatar */}
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
             {/* Desktop Navigation Links */}
-            <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', ml: 3 }}>
+            <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', mr: 2 }}>
               <Link href={'/'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>Home</Link>
               <Link href={'/About'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>About</Link>
               <Link href={'/Contact'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>Contact</Link>
               <Link href={'/AddCustomer'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>(+) Add Customer</Link>
             </Box>
-          </Box>
 
-          {/* Right side: Avatar Menu (always visible) */}
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            {/* Avatar */}
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/favicon.ico" />
