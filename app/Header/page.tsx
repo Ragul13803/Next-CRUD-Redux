@@ -24,7 +24,7 @@ const ListItemLink = forwardRef(function ListItemLink(props: any, ref: React.Ref
   return <NextLink ref={ref} {...props} />;
 });
 
-const pages = ['Home', 'About', 'Contact', '(+) Add Customer'];
+const pages = ['Home', 'About', 'Contact', 'AddCustomer'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Header() {
