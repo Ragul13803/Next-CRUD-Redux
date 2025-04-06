@@ -13,15 +13,19 @@ export default function Home() {
   const { customers } = useAppSelector((state) => state.customer);
   const [loading, setLoading] = useState(true);
 
-  const handleEdit = (id) => {
+  const handleEdit = (id: string) => {
     router.push(`/UpdateCustomer/${id}`);
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (id: string) => {
     setLoading(true);
     await dispatch(deleteCustomer(id));
     await dispatch(getallCustomers());
     setLoading(false);
+  };
+
+  const handleAdd = () => {
+    router.push('/AddCustomer');
   };
 
   useEffect(() => {
@@ -40,22 +44,42 @@ export default function Home() {
       </Typography>
 
       {loading ? (
-        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '40vh' }}>
-          <CircularProgress sx={{ color: '#5F8B4C' }} /> 
-          <Typography variant="h4">Loading...</Typography>
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '40vh' }}>
+          <CircularProgress sx={{ color: '#5F8B4C', mb: 2 }} />
+          <Typography variant="h6">Loading...</Typography>
         </Box>
-      ) : customers.length > 0 ? (
+      ) : customers.length === 0 ? (
+        <Typography align="center" sx={{ fontWeight: 'bold', fontSize: '18px', color: '#5F8B4C', mt: 4 }}>
+          No Customers Available
+        </Typography>
+      ) : (
         <Grid container spacing={3}>
+          {/* Add Customer Card */}
+          <Grid item xs={12} sm={6} md={4} lg={3}>
+            <Card
+              onClick={handleAdd}
+              sx={{
+                border: '2px dashed #5F8B4C',
+                borderRadius: '16px',
+                padding: 2,
+                textAlign: 'center',
+                cursor: 'pointer',
+                transition: '0.3s',
+                '&:hover': {
+                  backgroundColor: '#f5f5f5',
+                },
+              }}
+            >
+              <CardContent>
+                <Typography variant="h3" color="primary">+</Typography>
+                <Typography variant="h6" color="text.secondary">Add Customer</Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          {/* Customer Cards */}
           {customers.map((item, index) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
-              <Card sx={{ border: '1px solid #D1D1D1', borderRadius: '16px', padding: 2 }}>
-                <CardContent>
-                  <Box sx={{ display: 'flex', flexDirection: 'column', }}>
-                    (+)
-                    <Typography variant="h6">Add Customer</Typography>
-                  </Box>
-                </CardContent>
-              </Card>
+            <Grid item xs={12} sm={6} md={4} lg={3} key={item._id}>
               <Card sx={{ border: '1px solid #D1D1D1', borderRadius: '16px', padding: 2 }}>
                 <CardContent>
                   <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#143D60' }}>
@@ -85,10 +109,6 @@ export default function Home() {
             </Grid>
           ))}
         </Grid>
-      ) : (
-        <Typography align="center" sx={{ fontWeight: 'bold', fontSize: '18px', color: '#5F8B4C', mt: 4 }}>
-          No Customers Available
-        </Typography>
       )}
     </Box>
   );
