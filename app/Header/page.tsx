@@ -17,6 +17,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import NextLink from 'next/link';
 import { forwardRef } from 'react';
+import Divider from '@mui/material/Divider';
 
 const ListItemLink = forwardRef(function ListItemLink(props: any, ref: React.Ref<HTMLAnchorElement>) {
   return <NextLink ref={ref} {...props} />;
