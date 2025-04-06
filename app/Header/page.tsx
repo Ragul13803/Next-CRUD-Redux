@@ -15,8 +15,6 @@ import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
-import Image from 'next/image';
 import NextLink from 'next/link';
 import { forwardRef } from 'react';
 
@@ -55,57 +53,41 @@ function Header() {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ justifyContent: 'space-between', width: '100%' }}>
-          {/* Mobile/Tablet Menu Icon - Left Side */}
-          <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center', mr: 2 }}>
-            <IconButton onClick={toggleDrawer(true)} sx={{ color: '#143D60', p: 0 }}>
-              Menu
-            </IconButton>
+          {/* Left side: Menu + CUSTOMERS for mobile/tablet and full nav for desktop */}
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            {/* Mobile/Tablet Menu Button */}
+            <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center', mr: 1 }}>
+              <IconButton onClick={toggleDrawer(true)} sx={{ color: '#143D60', p: 0 }}>
+               ≡ Menu
+              </IconButton>
+            </Box>
+
+            {/* CUSTOMERS Logo */}
+            <Link
+              href="/"
+              style={{
+                fontWeight: 700,
+                color: '#143D60',
+                textDecoration: 'none',
+                fontSize: '20px',
+              }}
+            >
+              CUSTOMERS
+            </Link>
+
+            {/* Desktop Navigation Links */}
+            <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', ml: 3 }}>
+              <Link href={'/'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>Home</Link>
+              <Link href={'/About'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>About</Link>
+              <Link href={'/Contact'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>Contact</Link>
+              <Link href={'/AddCustomer'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>(+) Add Customer</Link>
+            </Box>
           </Box>
 
-          {/* Logo */}
-          <Link
-            href="/"
-            style={{
-              fontWeight: 700,
-              color: '#143D60',
-              textDecoration: 'none',
-              fontSize: '20px',
-            }}
-          >
-            CUSTOMERS
-          </Link>
-
-          {/* Mobile Drawer */}
-          <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
-            <Box
-              sx={{ width: 250 }}
-              role="presentation"
-              onClick={toggleDrawer(false)}
-            >
-              <List>
-                {pages.map((page) => (
-                  <ListItem
-                    button
-                    key={page}
-                    component={ListItemLink}
-                    href={`/${page === 'Home' ? '' : page}`.replace(/\s+/g, '')}
-                  >
-                    <ListItemText primary={page} />
-                  </ListItem>
-                ))}
-              </List>
-            </Box>
-          </Drawer>
-
-          {/* Right Section - Desktop Only */}
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
-            <Link href={'/'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>Home</Link>
-            <Link href={'/About'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>About</Link>
-            <Link href={'/Contact'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>Contact</Link>
-            <Link href={'/AddCustomer'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>(+) Add Customer</Link>
-
+          {/* Right side: Avatar Menu (always visible) */}
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, marginLeft: '14px' }}>
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/favicon.ico" />
               </IconButton>
             </Tooltip>
@@ -127,6 +109,28 @@ function Header() {
             </Menu>
           </Box>
         </Toolbar>
+
+        {/* Drawer for mobile navigation */}
+        <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
+          <Box
+            sx={{ width: 250 }}
+            role="presentation"
+            onClick={toggleDrawer(false)}
+          >
+            <List>
+              {pages.map((page) => (
+                <ListItem
+                  button
+                  key={page}
+                  component={ListItemLink}
+                  href={`/${page === 'Home' ? '' : page}`.replace(/\s+/g, '')}
+                >
+                  <ListItemText primary={page} />
+                </ListItem>
+              ))}
+            </List>
+          </Box>
+        </Drawer>
       </Container>
     </AppBar>
   );
