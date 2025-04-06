@@ -112,26 +112,32 @@ function Header() {
         </Toolbar>
 
         {/* Drawer for mobile navigation */}
-        <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
-          <Box
-            sx={{ width: 180, bgcolor: '#DDEB9D', color: '#143D60', }}
-            role="presentation"
-            onClick={toggleDrawer(false)}
+       <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
+  <Box
+    sx={{ width: 150, bgcolor: '#DDEB9D', color: '#143D60', height: '100%' }}
+    role="presentation"
+    onClick={toggleDrawer(false)}
+  >
+    <List>
+      {pages.map((page, index) => (
+        <React.Fragment key={page}>
+          <ListItem
+            button
+            component={ListItemLink}
+            href={`/${page === 'Home' ? '' : page}`.replace(/\s+/g, '')}
           >
-            <List>
-              {pages.map((page) => (
-                <ListItem
-                  button
-                  key={page}
-                  component={ListItemLink}
-                  href={`/${page === 'Home' ? '' : page}`.replace(/\s+/g, '')}
-                >
-                  <ListItemText primary={page} />
-                </ListItem>
-              ))}
-            </List>
-          </Box>
-        </Drawer>
+            <ListItemText
+              primary={page}
+              primaryTypographyProps={{ sx: { color: '#143D60' } }}
+            />
+          </ListItem>
+          <Divider sx={{ bgcolor: '#143D60' }} />
+        </React.Fragment>
+      ))}
+    </List>
+  </Box>
+</Drawer>
+
       </Container>
     </AppBar>
   );
