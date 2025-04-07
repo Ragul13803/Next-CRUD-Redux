@@ -126,8 +126,8 @@ export default function Home() {
                     flexDirection: 'column',
                     justifyContent: 'space-between',
                     border: '1px solid #D1D1D1',
-                    borderRadius: '16px',
-                    padding: 2,
+                    borderRadius: '12px',
+                    padding: '10px',
                     position: 'relative',
                     bgcolor: '#DDEB9D',
                     color: '#143D60',
@@ -173,6 +173,7 @@ export default function Home() {
 
                   <CardContent>
                     {/* Avatar */}
+                    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <Box
                       sx={{
                         height: 80,
@@ -197,15 +198,15 @@ export default function Home() {
                       sx={{
                         fontWeight: 'bold',
                         color: '#143D60',
-                        mb: 2,
                         whiteSpace: 'nowrap',
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
                         textAlign: 'center',
                       }}
                     >
-                      {truncate(item.name, 20)}
+                      {truncate(item.name, 25)}
                     </Typography>
+                    </Box>
 
                     {/* Info section left-aligned */}
                     <Grid container spacing={1}>
