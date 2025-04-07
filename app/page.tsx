@@ -100,6 +100,7 @@ export default function Home() {
                 '&:hover': {
                   bgcolor: '#F3FBE1',
                 },
+                padding: '10px',
               }}
             >
               <Box
@@ -211,6 +212,7 @@ export default function Home() {
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
                       textAlign: 'center',
+                      padding: '10px',
                     }}
                   >
                     {truncate(item.name, 25)}
