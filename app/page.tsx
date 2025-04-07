@@ -127,7 +127,7 @@ export default function Home() {
                     justifyContent: 'space-between',
                     border: '1px solid #D1D1D1',
                     borderRadius: '12px',
-                    padding: '10px',
+                    // padding: '10px',
                     position: 'relative',
                     bgcolor: '#DDEB9D',
                     color: '#143D60',
