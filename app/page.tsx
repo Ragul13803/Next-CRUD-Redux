@@ -171,7 +171,14 @@ export default function Home() {
                     </MenuItem>
                   </Menu>
 
-                  <CardContent sx={{ }}>
+                  <CardContent 
+                    sx={{
+                          p: '10px !important', // override all padding with !important
+                          '&:last-child': {
+                            pb: '10px !important', // override the bottom padding applied to the last-child
+                          },
+                        }}
+                    >
                     {/* Avatar */}
                     <Box
                       sx={{
