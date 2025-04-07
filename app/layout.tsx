@@ -3,6 +3,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./Header/page";
+import Footer from "./footer";
 import { Provider } from "react-redux";
 import { store } from "./Redux/store";
 
@@ -34,6 +35,7 @@ export default function RootLayout({
         >
         <Header />
         <Provider store={store}>{children}</Provider>
+        <Footer />
       </body>
     </html>
   );
