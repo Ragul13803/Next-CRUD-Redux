@@ -61,19 +61,19 @@ export default function Home() {
   }, [dispatch]);
 
   return (
-    <Box sx={{ padding: 3 }}>
+    <Box sx={{ padding: '40px 20px 20px 20px' }}>
       <Typography
-        variant="h4"
+        variant="h3"
         align="center"
         sx={{ color: '#5F8B4C', fontStyle: 'italic', marginBottom: 4 }}
       >
-        Customer List
+        Customers
       </Typography>
 
       {loading ? (
         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '40vh' }}>
           <CircularProgress sx={{ color: '#5F8B4C', marginRight: 2 }} />
-          <Typography variant="h4">Loading...</Typography>
+          <Typography variant="h3">Loading...</Typography>
         </Box>
       ) : customers.length === 0 ? (
         <Typography align="center" sx={{ fontWeight: 'bold', fontSize: '18px', color: '#5F8B4C', mt: 4 }}>
@@ -110,7 +110,7 @@ export default function Home() {
               >
                 +
               </Box>
-              <Typography variant="caption" color="#143D60">
+              <Typography variant="heading" color="#143D60">
                 Add Customer
               </Typography>
             </Box>
@@ -127,7 +127,7 @@ export default function Home() {
                     justifyContent: 'space-between',
                     border: '1px solid #D1D1D1',
                     borderRadius: '12px',
-                    padding: '10px',
+                    // padding: '10px',
                     position: 'relative',
                     bgcolor: '#DDEB9D',
                     color: '#143D60',
@@ -171,7 +171,7 @@ export default function Home() {
                     </MenuItem>
                   </Menu>
 
-                  <CardContent>
+                  <CardContent sx={{ padding: '8px 12px'}}>
                     {/* Avatar */}
                     <Box sx={{ display: 'flex',  }}>
                     <Box
@@ -184,7 +184,7 @@ export default function Home() {
                         fontSize: 24,
                         display: 'flex',
                         alignItems: 'center',
-                        justifyContent: 'center',
+                        // justifyContent: 'center',
                         margin: '0 auto',
                         mb: 1,
                       }}
