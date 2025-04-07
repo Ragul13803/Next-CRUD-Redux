@@ -59,7 +59,7 @@ export default function Home() {
       </Typography>
 
       {loading ? (
-        <Box sx={{ display: 'flex', alignItems: 'center', minHeight: '40vh' }}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '40vh' }}>
           <CircularProgress sx={{ color: '#5F8B4C', marginRight: 2 }} />
           <Typography variant="h4">Loading...</Typography>
         </Box>
@@ -75,7 +75,7 @@ export default function Home() {
               onClick={handleAdd}
               sx={{
                 height: '100%',
-                border: '1px dashed #143D60',
+                border: '1.4px dashed #143D60',
                 borderRadius: '16px',
                 padding: 2,
                 textAlign: 'center',
@@ -92,8 +92,8 @@ export default function Home() {
               <CardContent>
                 <Box
                   sx={{
-                    height: 50,
-                    width: 50,
+                    height: 100,
+                    width: 100,
                     borderRadius: '50%',
                      bgcolor: '#DDEB9D',
                     color: '#143D60',
@@ -127,6 +127,8 @@ export default function Home() {
                   borderRadius: '16px',
                   padding: 2,
                   position: 'relative',
+                  bgcolor: '#DDEB9D',
+                  color: '#143D60',
                 }}
               >
                 {/* Menu Icon */}
@@ -172,10 +174,10 @@ export default function Home() {
                   {/* Profile Image Box */}
                   <Box
                     sx={{
-                      height: 50,
-                      width: 50,
+                      height: 80,
+                      width: 80,
                       borderRadius: '50%',
-                      bgcolor: '#A9D89C',
+                      bgcolor: 'white',
                       color: '#5F8B4C',
                       fontSize: 24,
                       display: 'flex',
@@ -205,12 +207,12 @@ export default function Home() {
 
                   {/* Data in Grid */}
                   <Grid container spacing={1} justifyContent="center">
-                    <Grid item xs={6}>
+                    <Grid item xs={12}>
                       <Typography variant="body2">
                         <strong>Age:</strong> {item.age}
                       </Typography>
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={12}>
                       <Typography variant="body2">
                         <strong>Gender:</strong> {item.gender}
                       </Typography>
