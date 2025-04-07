@@ -127,7 +127,7 @@ export default function Home() {
                     justifyContent: 'space-between',
                     border: '1px solid #D1D1D1',
                     borderRadius: '12px',
-                    // padding: '10px',
+                    padding: '10px',
                     position: 'relative',
                     bgcolor: '#DDEB9D',
                     color: '#143D60',
@@ -171,8 +171,9 @@ export default function Home() {
                     </MenuItem>
                   </Menu>
 
-                  <CardContent sx={{ padding: '10px 10px 0px 10px'}}>
+                  <CardContent sx={{ padding: '0px'}}>
                     {/* Avatar */}
+                    <Box sx={{ display: 'flex', }}>
                     <Box
                       sx={{
                         height: 80,
@@ -184,7 +185,7 @@ export default function Home() {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        margin: '16px auto 0px auto',
+                        marginTop: '24px',
                       }}
                     >
                       {item.name[0].toUpperCase()}
@@ -204,6 +205,7 @@ export default function Home() {
                     >
                       {truncate(item.name, 25)}
                     </Typography>
+                    </Box>
 
                     {/* Info section left-aligned */}
                     <Grid container spacing={0}>
