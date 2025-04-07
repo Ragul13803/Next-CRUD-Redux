@@ -30,9 +30,9 @@ function Contact() {
     <>
       <Card
         sx={{
-          maxWidth: 500,
-          // mx: 'auto',
-          // mt: 5,
+          width: 250,
+          mx: 'auto',
+          mt: 5,
           p: 2,
           boxShadow: 3,
           bgcolor: '#DDEB9D',
