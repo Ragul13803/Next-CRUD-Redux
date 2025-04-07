@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Typography, Button, CircularProgress, Grid, Card, CardContent, IconButton, Menu, MenuItem, } from '@mui/material';
+import { Box, Typography, CircularProgress, Grid, Card, CardContent, IconButton, Menu, MenuItem, } from '@mui/material';
 import { ButtonStyle } from './styles/page.style';
 import { useRouter } from 'next/navigation';
 import { useAppDispatch, useAppSelector } from './Redux/store';
@@ -60,7 +60,7 @@ export default function Home() {
 
       {loading ? (
         <Box sx={{ display: 'flex', alignItems: 'center', minHeight: '40vh' }}>
-          <CircularProgress sx={{ color: '#5F8B4C',  }} />
+          <CircularProgress sx={{ color: '#5F8B4C', marginRight: 2 }} />
           <Typography variant="h4">Loading...</Typography>
         </Box>
       ) : customers.length === 0 ? (
@@ -86,10 +86,23 @@ export default function Home() {
               }}
             >
               <CardContent>
-                <Box sx={{ height: '50px', width: '50px', BorderRadius: '50%', bgcolor: '#BEDFB0', color: '#67AE6E' }}>
+                <Box
+                  sx={{
+                    height: 50,
+                    width: 50,
+                    borderRadius: '50%',
+                    bgcolor: '#A9D89C',
+                    color: '#5F8B4C',
+                    fontSize: 32,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: '0 auto',
+                  }}
+                >
                   +
-                </Typography>
-                <Typography variant="h3" color="text.secondary">
+                </Box>
+                <Typography variant="h6" color="text.secondary" sx={{ mt: 2 }}>
                   Add Customer
                 </Typography>
               </CardContent>
@@ -100,6 +113,7 @@ export default function Home() {
           {customers.map((item) => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={item._id}>
               <Card sx={{ border: '1px solid #D1D1D1', borderRadius: '16px', padding: 2, position: 'relative' }}>
+                {/* Menu Icon */}
                 <IconButton
                   onClick={(e) => handleMenuOpen(e, item._id)}
                   sx={{ position: 'absolute', top: 8, right: 8 }}
@@ -107,6 +121,7 @@ export default function Home() {
                   <MoreVertIcon />
                 </IconButton>
 
+                {/* Dropdown Menu */}
                 <Menu
                   anchorEl={menuAnchorEls[item._id]}
                   open={Boolean(menuAnchorEls[item._id])}
@@ -138,6 +153,7 @@ export default function Home() {
                   </MenuItem>
                 </Menu>
 
+                {/* Card Content */}
                 <CardContent>
                   <Typography
                     variant="h6"
