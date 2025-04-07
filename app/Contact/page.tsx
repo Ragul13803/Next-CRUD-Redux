@@ -31,12 +31,13 @@ function Contact() {
       <Card
         sx={{
           maxWidth: 500,
-          mx: 'auto',
-          mt: 5,
+          // mx: 'auto',
+          // mt: 5,
           p: 2,
           boxShadow: 3,
           bgcolor: '#DDEB9D',
           color: '#143D60',
+          borderRadius: '10px',
         }}
       >
         <CardContent>
@@ -79,7 +80,7 @@ function Contact() {
               fullWidth
               InputLabelProps={{ style: { color: '#143D60' } }}
             />
-            <Button type="submit" variant="contained" sx={{ bgcolor: '#143D60', color: '#fff', '&:hover': { bgcolor: '#0f2e4d' } }}>
+            <Button type="submit" variant="contained" sx={{ bgcolor: '#143D60', color: '#143D60', '&:hover': { bgcolor: '#143D60' }, borderRadius: '10px', }}>
               Send Message
             </Button>
           </Box>
