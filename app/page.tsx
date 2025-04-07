@@ -74,11 +74,15 @@ export default function Home() {
             <Card
               onClick={handleAdd}
               sx={{
-                border: '2px dashed #5F8B4C',
+                height: '100%',
+                border: '1px dashed #143D60',
                 borderRadius: '16px',
                 padding: 2,
                 textAlign: 'center',
                 cursor: 'pointer',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
                 transition: '0.3s',
                 '&:hover': {
                   backgroundColor: '#f5f5f5',
@@ -91,18 +95,19 @@ export default function Home() {
                     height: 50,
                     width: 50,
                     borderRadius: '50%',
-                    bgcolor: '#A9D89C',
-                    color: '#5F8B4C',
+                     bgcolor: '#DDEB9D',
+                    color: '#143D60',
                     fontSize: 32,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     margin: '0 auto',
+                    mb: 1,
                   }}
                 >
                   +
                 </Box>
-                <Typography variant="h6" color="text.secondary" sx={{ mt: 2 }}>
+                <Typography variant="h6" color="#143D60">
                   Add Customer
                 </Typography>
               </CardContent>
@@ -110,9 +115,20 @@ export default function Home() {
           </Grid>
 
           {/* Customer Cards */}
-          {customers.map((item) => (
+          {customers?.map((item) => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={item._id}>
-              <Card sx={{ border: '1px solid #D1D1D1', borderRadius: '16px', padding: 2, position: 'relative' }}>
+              <Card
+                sx={{
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  border: '1px solid #D1D1D1',
+                  borderRadius: '16px',
+                  padding: 2,
+                  position: 'relative',
+                }}
+              >
                 {/* Menu Icon */}
                 <IconButton
                   onClick={(e) => handleMenuOpen(e, item._id)}
@@ -121,7 +137,6 @@ export default function Home() {
                   ⋮
                 </IconButton>
 
-                {/* Dropdown Menu */}
                 <Menu
                   anchorEl={menuAnchorEls[item._id]}
                   open={Boolean(menuAnchorEls[item._id])}
@@ -153,13 +168,33 @@ export default function Home() {
                   </MenuItem>
                 </Menu>
 
-                {/* Card Content */}
-                <CardContent>
+                <CardContent sx={{ textAlign: 'center' }}>
+                  {/* Profile Image Box */}
+                  <Box
+                    sx={{
+                      height: 50,
+                      width: 50,
+                      borderRadius: '50%',
+                      bgcolor: '#A9D89C',
+                      color: '#5F8B4C',
+                      fontSize: 24,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      margin: '0 auto',
+                      mb: 1,
+                    }}
+                  >
+                    {item.name[0].toUpperCase()}
+                  </Box>
+
+                  {/* Name */}
                   <Typography
                     variant="h6"
                     sx={{
                       fontWeight: 'bold',
                       color: '#143D60',
+                      mb: 2,
                       whiteSpace: 'nowrap',
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
@@ -167,24 +202,37 @@ export default function Home() {
                   >
                     {truncate(item.name, 20)}
                   </Typography>
-                  <Typography>
-                    <strong>Age:</strong> {item.age}
-                  </Typography>
-                  <Typography>
-                    <strong>Gender:</strong> {item.gender}
-                  </Typography>
-                  <Typography>
-                    <strong>Mobile:</strong> {item.mobile}
-                  </Typography>
-                  <Typography
-                    sx={{
-                      whiteSpace: 'nowrap',
-                      overflow: 'hidden',
-                      textOverflow: 'ellipsis',
-                    }}
-                  >
-                    <strong>Gmail:</strong> {truncate(item.gmail, 25)}
-                  </Typography>
+
+                  {/* Data in Grid */}
+                  <Grid container spacing={1} justifyContent="center">
+                    <Grid item xs={6}>
+                      <Typography variant="body2">
+                        <strong>Age:</strong> {item.age}
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Typography variant="body2">
+                        <strong>Gender:</strong> {item.gender}
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Typography variant="body2">
+                        <strong>Mobile:</strong> {item.mobile}
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          whiteSpace: 'nowrap',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                        }}
+                      >
+                        <strong>Gmail:</strong> {truncate(item.gmail, 25)}
+                      </Typography>
+                    </Grid>
+                  </Grid>
                 </CardContent>
               </Card>
             </Grid>
