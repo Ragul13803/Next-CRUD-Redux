@@ -65,7 +65,7 @@ export default function Home() {
       <Typography
         variant="h3"
         align="center"
-        sx={{ color: '#5F8B4C', fontStyle: 'italic', marginBottom: 4 }}
+        sx={{ color: '#143D60', fontStyle: 'italic' }}
       >
         Customers
       </Typography>
@@ -73,7 +73,7 @@ export default function Home() {
       {loading ? (
         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '40vh' }}>
           <CircularProgress sx={{ color: '#5F8B4C', marginRight: 2 }} />
-          <Typography variant="h3">Loading...</Typography>
+          <Typography variant="h5">Loading...</Typography>
         </Box>
       ) : customers.length === 0 ? (
         <Typography align="center" sx={{ fontWeight: 'bold', fontSize: '18px', color: '#5F8B4C', mt: 4 }}>
@@ -110,7 +110,7 @@ export default function Home() {
               >
                 +
               </Box>
-              <Typography variant="caption" color="#143D60">
+              <Typography variant="body1" color="#143D60">
                 Add Customer
               </Typography>
             </Box>
@@ -171,9 +171,8 @@ export default function Home() {
                     </MenuItem>
                   </Menu>
 
-                  <CardContent sx={{ padding: '8px 12px'}}>
+                  <CardContent sx={{ padding: '16px 12px 0px 12px'}}>
                     {/* Avatar */}
-                    <Box sx={{ display: 'flex',  }}>
                     <Box
                       sx={{
                         height: 80,
@@ -184,7 +183,7 @@ export default function Home() {
                         fontSize: 24,
                         display: 'flex',
                         alignItems: 'center',
-                        // justifyContent: 'center',
+                        justifyContent: 'center',
                         margin: '0 auto',
                         mb: 1,
                       }}
@@ -206,7 +205,6 @@ export default function Home() {
                     >
                       {truncate(item.name, 25)}
                     </Typography>
-                    </Box>
 
                     {/* Info section left-aligned */}
                     <Grid container spacing={0}>
