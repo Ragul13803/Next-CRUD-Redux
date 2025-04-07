@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useAppDispatch, useAppSelector } from './Redux/store';
 import { useEffect, useState } from 'react';
 import { deleteCustomer, getallCustomers } from './Redux/Customers/thunk';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+// import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 export default function Home() {
   const router = useRouter();
@@ -118,7 +118,7 @@ export default function Home() {
                   onClick={(e) => handleMenuOpen(e, item._id)}
                   sx={{ position: 'absolute', top: 8, right: 8 }}
                 >
-                  <MoreVertIcon />
+                  ⋮
                 </IconButton>
 
                 {/* Dropdown Menu */}
