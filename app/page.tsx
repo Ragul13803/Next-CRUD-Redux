@@ -171,9 +171,9 @@ export default function Home() {
                     </MenuItem>
                   </Menu>
 
-                  <CardContent sx={{ padding: '0px'}}>
+                  <CardContent sx={{ padding: '0px', paddingBottom: '0px', }}>
                     {/* Avatar */}
-                    <Box sx={{ display: 'flex', }}>
+{/*                     <Box sx={{ display: 'flex', }}> */}
                     <Box
                       sx={{
                         height: 80,
@@ -205,7 +205,7 @@ export default function Home() {
                     >
                       {truncate(item.name, 25)}
                     </Typography>
-                    </Box>
+{/*                     </Box> */}
 
                     {/* Info section left-aligned */}
                     <Grid container spacing={0}>
