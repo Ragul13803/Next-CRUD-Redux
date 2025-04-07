@@ -81,7 +81,7 @@ export default function Home() {
         </Typography>
       ) : (
         <>
-          <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 3 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
             <Box
               sx={{
                 display: 'flex',
@@ -96,8 +96,8 @@ export default function Home() {
             >
               <Box
                 sx={{
-                  height: 20,
-                  width: 20,
+                  height: 24,
+                  width: 24,
                   borderRadius: '50%',
                   bgcolor: '#DDEB9D',
                   color: '#143D60',
@@ -110,7 +110,7 @@ export default function Home() {
               >
                 +
               </Box>
-              <Typography variant="h6" color="#143D60">
+              <Typography variant="caption" color="#143D60">
                 Add Customer
               </Typography>
             </Box>
@@ -173,7 +173,7 @@ export default function Home() {
 
                   <CardContent>
                     {/* Avatar */}
-                    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                    <Box sx={{ display: 'flex',  }}>
                     <Box
                       sx={{
                         height: 80,
@@ -209,7 +209,7 @@ export default function Home() {
                     </Box>
 
                     {/* Info section left-aligned */}
-                    <Grid container spacing={1}>
+                    <Grid container spacing={0}>
                       <Grid item xs={12}>
                         <Typography variant="body2">
                           <strong>Age:</strong> {item.age}
