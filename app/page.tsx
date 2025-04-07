@@ -110,7 +110,7 @@ export default function Home() {
               >
                 +
               </Box>
-              <Typography variant="heading" color="#143D60">
+              <Typography variant="caption" color="#143D60">
                 Add Customer
               </Typography>
             </Box>
