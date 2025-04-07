@@ -104,8 +104,8 @@ export default function Home() {
             >
               <Box
                 sx={{
-                  height: 100,
-                  width: 100,
+                  height: 80,
+                  width: 80,
                   borderRadius: '50%',
                   bgcolor: '#DDEB9D',
                   color: '#143D60',
@@ -117,7 +117,7 @@ export default function Home() {
               >
                 +
               </Box>
-              <Typography variant="h6" align="center" sx={{ padding: '16px' }}>
+              <Typography variant="h5" align="center" sx={{ padding: '16px' }}>
                 Add Customer
               </Typography>
             </Card>
@@ -179,9 +179,9 @@ export default function Home() {
 
                 <CardContent
                   sx={{
-                    p: '10px 18px !important',
+                    p: '16px !important',
                     '&:last-child': {
-                      pb: '10px !important',
+                      pb: '16px !important',
                     },
                   }}
                 >
