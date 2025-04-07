@@ -27,7 +27,7 @@ function Contact() {
   };
 
   return (
-    <div className={Styles.page}>
+    <>
       <Card
         sx={{
           maxWidth: 500,
@@ -80,7 +80,7 @@ function Contact() {
               fullWidth
               InputLabelProps={{ style: { color: '#143D60' } }}
             />
-            <Button type="submit" variant="contained" sx={{ bgcolor: '#143D60', color: '#143D60', '&:hover': { bgcolor: '#143D60' }, borderRadius: '10px', }}>
+            <Button type="submit" variant="contained" sx={{ bgcolor: '#143D60', color: '#fff', '&:hover': { bgcolor: '#143D60' }, borderRadius: '8px', }}>
               Send Message
             </Button>
           </Box>
@@ -97,7 +97,7 @@ function Contact() {
           Message sent successfully!
         </Alert>
       </Snackbar>
-    </div>
+    </>
   );
 }
 
