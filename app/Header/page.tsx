@@ -90,7 +90,7 @@ function Header() {
           {/* Right side: Desktop Nav + Avatar */}
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             {/* Desktop Navigation Links */}
-            <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', mr: 2 }}>
+            <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
               <Link href={'/'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>Home</Link>
               <Link href={'/About'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>About</Link>
               <Link href={'/Contact'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>Contact</Link>
@@ -99,7 +99,7 @@ function Header() {
 
             {/* Avatar */}
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ m: 0 }}>
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/favicon.ico" />
               </IconButton>
             </Tooltip>
