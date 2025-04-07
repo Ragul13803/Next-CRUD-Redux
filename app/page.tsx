@@ -67,35 +67,14 @@ export default function Home() {
         <Typography align="center" sx={{ fontWeight: 'bold', fontSize: '18px', color: '#5F8B4C', mt: 4 }}>
           No Customers Available
         </Typography>
-      ) : (
-        <Grid container spacing={3}>
-          {/* Add Customer Card */}
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-            <Card
-              onClick={handleAdd}
-              sx={{
-                height: '100%',
-                border: '1.4px dashed #143D60',
-                borderRadius: '16px',
-                padding: 2,
-                textAlign: 'center',
-                cursor: 'pointer',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                transition: '0.3s',
-                '&:hover': {
-                  backgroundColor: '#f5f5f5',
-                },
-              }}
-            >
-              <CardContent>
+      ) : (<Box sx={{ display: 'flex', justifyContent: 'flex-end'}}>
+              <Box sx={{ display: 'flex', border: '1px solid #143D60', borderRadius: '16px',}} onClick={handleAdd}>
                 <Box
                   sx={{
-                    height: 100,
-                    width: 100,
+                    height: 20,
+                    width: 20,
                     borderRadius: '50%',
-                     bgcolor: '#DDEB9D',
+                    bgcolor: '#DDEB9D',
                     color: '#143D60',
                     fontSize: 32,
                     display: 'flex',
@@ -110,10 +89,9 @@ export default function Home() {
                 <Typography variant="h6" color="#143D60">
                   Add Customer
                 </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-
+              </Box>
+        </Box>
+        <Grid container spacing={4}>
           {/* Customer Cards */}
           {customers?.map((item) => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={item._id}>
