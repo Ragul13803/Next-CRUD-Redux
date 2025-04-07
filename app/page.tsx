@@ -127,7 +127,6 @@ export default function Home() {
                     justifyContent: 'space-between',
                     border: '1px solid #D1D1D1',
                     borderRadius: '12px',
-                    // padding: '10px',
                     position: 'relative',
                     bgcolor: '#DDEB9D',
                     color: '#143D60',
@@ -173,7 +172,7 @@ export default function Home() {
 
                   <CardContent 
                     sx={{
-                          p: '10px !important', // override all padding with !important
+                          p: '10px 14px !important', // override all padding with !important
                           '&:last-child': {
                             pb: '10px !important', // override the bottom padding applied to the last-child
                           },
@@ -191,8 +190,7 @@ export default function Home() {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        margin: '0 auto',
-                        mb: 1,
+                        margin: '12px auto 0 auto',
                       }}
                     >
                       {item.name[0].toUpperCase()}
