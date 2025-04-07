@@ -171,7 +171,7 @@ export default function Home() {
                     </MenuItem>
                   </Menu>
 
-                  <CardContent sx={{ padding: '16px 12px 0px 12px'}}>
+                  <CardContent sx={{ padding: '10px 10px 0px 10px'}}>
                     {/* Avatar */}
                     <Box
                       sx={{
@@ -184,8 +184,7 @@ export default function Home() {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        margin: '0 auto',
-                        mb: 1,
+                        margin: '16px auto 0px auto',
                       }}
                     >
                       {item.name[0].toUpperCase()}
