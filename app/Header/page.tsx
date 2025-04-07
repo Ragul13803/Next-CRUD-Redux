@@ -23,7 +23,7 @@ const ListItemLink = forwardRef(function ListItemLink(props: any, ref: React.Ref
   return <NextLink ref={ref} {...props} />;
 });
 
-const pages = ['Home', 'About', 'Contact', 'AddCustomer'];
+const pages = ['Home', 'About', 'Contact'];
 const settings = ['Profile', 'Logout'];
 
 function Header() {
@@ -47,8 +47,8 @@ function Header() {
       position="static"
       sx={{
         bgcolor: '#DDEB9D',
-        borderRadius: '8px',
         color: '#143D60',
+        borderRadius: '8px',
         boxShadow: 'none',
       }}
     >
@@ -57,11 +57,25 @@ function Header() {
           {/* Left side: Menu + CUSTOMERS */}
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             {/* Mobile/Tablet Menu Button */}
-            <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center', mr: 1 }}>
-              <IconButton onClick={toggleDrawer(true)} sx={{ color: '#143D60', p: 0 }}>
-                ≡
-              </IconButton>
-            </Box>
+<Box
+  sx={{
+    display: { xs: 'flex', md: 'none' },
+    alignItems: 'center',
+    mr: 1,
+    width: '40px', // Fixed width so it doesn't shift
+    justifyContent: 'center',
+  }}
+>
+  <IconButton
+    onClick={toggleDrawer(true)}
+    sx={{ color: '#143D60', p: 0 }}
+  >
+    <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
+      ≡
+    </Typography>
+  </IconButton>
+</Box>
+
 
             {/* CUSTOMERS Logo */}
             <Link
@@ -84,7 +98,7 @@ function Header() {
               <Link href={'/'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>Home</Link>
               <Link href={'/About'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>About</Link>
               <Link href={'/Contact'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>Contact</Link>
-              <Link href={'/AddCustomer'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>(+) Add Customer</Link>
+{/*               <Link href={'/AddCustomer'} style={{ paddingRight: '14px', fontWeight: 'bold' }}>(+) Add Customer</Link> */}
             </Box>
 
             {/* Avatar */}
