@@ -52,7 +52,7 @@ export default function Home() {
 
   return (
     <Box sx={{ padding: 3 }}>
-      <Typography variant="h5" align="center" sx={{ color: '#5F8B4C', fontStyle: 'italic', marginBottom: 4 }}>
+      <Typography variant="h4" align="center" sx={{ color: '#5F8B4C', fontStyle: 'italic', marginBottom: 4 }}>
         Customer List
       </Typography>
 
@@ -69,7 +69,7 @@ export default function Home() {
         <>
           <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 3 }}>
             <Box
-              sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer', border: '1px dashed #143D60', borderRadius: '8px', padding: '6px 12px', bgcolor: 'white' }}
+              sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer', border: '1px dashed #143D60', borderRadius: '12px', padding: '6px 12px', bgcolor: 'white' }}
               onClick={handleAdd}
             >
               <Box
@@ -94,7 +94,7 @@ export default function Home() {
             </Box>
           </Box>
 
-          <Grid container spacing={4}>
+          <Grid container spacing={2}>
             {customers?.map((item) => (
               <Grid item xs={12} sm={6} md={4} lg={3} key={item._id}>
                 <Card
@@ -186,21 +186,21 @@ export default function Home() {
   <table style={{ width: '100%', borderCollapse: 'collapse' }}>
     <tbody>
       <tr>
-        <td style={{ border: '1px solid red', textAlign: 'center', padding: '8px', fontWeight: 'bold' }}>Age</td>
-        <td style={{ border: '1px solid red', textAlign: 'left', padding: '8px' }}>{item.age}</td>
+        <td style={{ textAlign: 'left', padding: '8px', fontWeight: 'bold' }}>Age :</td>
+        <td style={{ textAlign: 'left', padding: '8px' }}>{item.age}</td>
       </tr>
       <tr>
-        <td style={{ border: '1px solid red', textAlign: 'center', padding: '8px', fontWeight: 'bold' }}>Gender</td>
-        <td style={{ border: '1px solid red', textAlign: 'left', padding: '8px' }}>{item.gender}</td>
+        <td style={{ textAlign: 'left', padding: '8px', fontWeight: 'bold' }}>Gender :</td>
+        <td style={{ textAlign: 'left', padding: '8px' }}>{item.gender}</td>
       </tr>
       <tr>
-        <td style={{ border: '1px solid red', textAlign: 'center', padding: '8px', fontWeight: 'bold' }}>Mobile</td>
-        <td style={{ border: '1px solid red', textAlign: 'left', padding: '8px' }}>{item.mobile}</td>
+        <td style={{ textAlign: 'left', padding: '8px', fontWeight: 'bold' }}>Mobile :</td>
+        <td style={{ textAlign: 'left', padding: '8px' }}>{item.mobile}</td>
       </tr>
       <tr>
-        <td style={{ border: '1px solid red', textAlign: 'center', padding: '8px', fontWeight: 'bold' }}>Gmail</td>
-        <td style={{ border: '1px solid red', textAlign: 'left', padding: '8px' }}>
-          {truncate(item.gmail, 25)}
+        <td style={{ textAlign: 'left', padding: '8px', fontWeight: 'bold' }}>Gmail :</td>
+        <td style={{ textAlign: 'left', padding: '8px' }}>
+          {truncate(item.gmail, 20)}
         </td>
       </tr>
     </tbody>
