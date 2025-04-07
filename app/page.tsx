@@ -1,17 +1,28 @@
 'use client';
 
-import { Box, Typography, Button, CircularProgress, Grid, Card, CardContent } from "@mui/material";
-import { ButtonStyle } from "./styles/page.style";
+import { Box, Typography, Button, CircularProgress, Grid, Card, CardContent, IconButton, Menu, MenuItem, } from '@mui/material';
+import { ButtonStyle } from './styles/page.style';
 import { useRouter } from 'next/navigation';
-import { useAppDispatch, useAppSelector } from "./Redux/store";
-import { useEffect, useState } from "react";
-import { deleteCustomer, getallCustomers } from "./Redux/Customers/thunk";
+import { useAppDispatch, useAppSelector } from './Redux/store';
+import { useEffect, useState } from 'react';
+import { deleteCustomer, getallCustomers } from './Redux/Customers/thunk';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 export default function Home() {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const { customers } = useAppSelector((state) => state.customer);
   const [loading, setLoading] = useState(true);
+
+  const [menuAnchorEls, setMenuAnchorEls] = useState<{ [key: string]: HTMLElement | null }>({});
+
+  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>, id: string) => {
+    setMenuAnchorEls((prev) => ({ ...prev, [id]: event.currentTarget }));
+  };
+
+  const handleMenuClose = (id: string) => {
+    setMenuAnchorEls((prev) => ({ ...prev, [id]: null }));
+  };
 
   const handleEdit = (id: string) => {
     router.push(`/UpdateCustomer/${id}`);
@@ -26,6 +37,10 @@ export default function Home() {
 
   const handleAdd = () => {
     router.push('/AddCustomer');
+  };
+
+  const truncate = (text: string, maxLength: number) => {
+    return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
   };
 
   useEffect(() => {
@@ -44,9 +59,9 @@ export default function Home() {
       </Typography>
 
       {loading ? (
-        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '40vh' }}>
-          <CircularProgress sx={{ color: '#5F8B4C', mb: 2 }} />
-          <Typography variant="h6">Loading...</Typography>
+        <Box sx={{ display: 'flex', alignItems: 'center', minHeight: '40vh' }}>
+          <CircularProgress sx={{ color: '#5F8B4C',  }} />
+          <Typography variant="h4">Loading...</Typography>
         </Box>
       ) : customers.length === 0 ? (
         <Typography align="center" sx={{ fontWeight: 'bold', fontSize: '18px', color: '#5F8B4C', mt: 4 }}>
@@ -71,39 +86,89 @@ export default function Home() {
               }}
             >
               <CardContent>
-                <Typography variant="h3" color="primary">+</Typography>
-                <Typography variant="h6" color="text.secondary">Add Customer</Typography>
+                <Box sx={{ height: '50px', width: '50px', BorderRadius: '50%', bgcolor: '#BEDFB0', color: '#67AE6E' }}>
+                  +
+                </Typography>
+                <Typography variant="h3" color="text.secondary">
+                  Add Customer
+                </Typography>
               </CardContent>
             </Card>
           </Grid>
 
           {/* Customer Cards */}
-          {customers.map((item, index) => (
+          {customers.map((item) => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={item._id}>
-              <Card sx={{ border: '1px solid #D1D1D1', borderRadius: '16px', padding: 2 }}>
-                <CardContent>
-                  <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#143D60' }}>
-                    {item.name}
-                  </Typography>
-                  <Typography><strong>Age:</strong> {item.age}</Typography>
-                  <Typography><strong>Gender:</strong> {item.gender}</Typography>
-                  <Typography><strong>Mobile:</strong> {item.mobile}</Typography>
-                  <Typography><strong>Gmail:</strong> {item.gmail}</Typography>
+              <Card sx={{ border: '1px solid #D1D1D1', borderRadius: '16px', padding: 2, position: 'relative' }}>
+                <IconButton
+                  onClick={(e) => handleMenuOpen(e, item._id)}
+                  sx={{ position: 'absolute', top: 8, right: 8 }}
+                >
+                  <MoreVertIcon />
+                </IconButton>
 
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: 2 }}>
-                    <Button
-                      sx={{ ...ButtonStyle, bgcolor: 'orange', padding: '4px 12px' }}
-                      onClick={() => handleEdit(item._id)}
-                    >
-                      Edit
-                    </Button>
-                    <Button
-                      sx={{ ...ButtonStyle, bgcolor: 'red', padding: '4px 12px' }}
-                      onClick={() => handleDelete(item._id)}
-                    >
-                      Delete
-                    </Button>
-                  </Box>
+                <Menu
+                  anchorEl={menuAnchorEls[item._id]}
+                  open={Boolean(menuAnchorEls[item._id])}
+                  onClose={() => handleMenuClose(item._id)}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                >
+                  <MenuItem
+                    onClick={() => {
+                      handleEdit(item._id);
+                      handleMenuClose(item._id);
+                    }}
+                  >
+                    Edit
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => {
+                      handleDelete(item._id);
+                      handleMenuClose(item._id);
+                    }}
+                  >
+                    Delete
+                  </MenuItem>
+                </Menu>
+
+                <CardContent>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      fontWeight: 'bold',
+                      color: '#143D60',
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                    }}
+                  >
+                    {truncate(item.name, 20)}
+                  </Typography>
+                  <Typography>
+                    <strong>Age:</strong> {item.age}
+                  </Typography>
+                  <Typography>
+                    <strong>Gender:</strong> {item.gender}
+                  </Typography>
+                  <Typography>
+                    <strong>Mobile:</strong> {item.mobile}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                    }}
+                  >
+                    <strong>Gmail:</strong> {truncate(item.gmail, 25)}
+                  </Typography>
                 </CardContent>
               </Card>
             </Grid>
