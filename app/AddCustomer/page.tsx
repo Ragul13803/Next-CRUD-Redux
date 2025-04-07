@@ -50,9 +50,9 @@ export default function AddCustomer() {
     formData.append('gender', newCustomer.gender);
     formData.append('mobile', newCustomer.mobile);
     formData.append('gmail', newCustomer.gmail);
-    if (image) {
-      formData.append('image', image);
-    }
+    // if (image) {
+    //   formData.append('image', image);
+    // }
 
     // @ts-ignore - depends on how thunk is typed
     dispatch(createCustomer(formData));
@@ -140,7 +140,7 @@ export default function AddCustomer() {
         ))}
 
         {/* ✅ Image Upload Input */}
-        <Box sx={{ display: 'flex', gap: '20px', justifyContent: 'space-around' }}>
+{/*         <Box sx={{ display: 'flex', gap: '20px', justifyContent: 'space-around' }}>
           <Typography variant="h6">Image :</Typography>
           <input
             type="file"
@@ -152,7 +152,7 @@ export default function AddCustomer() {
             }}
             style={{ color: '#143D60' }}
           />
-        </Box>
+        </Box> */}
 
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
           <Button sx={{ ...ButtonStyle, bgcolor: 'green', width: 'fit-content' }} onClick={handleAdd}>
