@@ -61,11 +61,11 @@ export default function Home() {
   }, [dispatch]);
 
   return (
-    <Box sx={{ padding: '40px 20px 20px 20px' }}>
+    <Box sx={{ padding: '20px' }}>
       <Typography
         variant="h3"
         align="center"
-        sx={{ color: '#143D60', fontStyle: 'italic' }}
+        sx={{ color: '#143D60', fontStyle: 'italic', padding: '16px' }}
       >
         Customers
       </Typography>
@@ -104,21 +104,20 @@ export default function Home() {
             >
               <Box
                 sx={{
-                  height: 60,
-                  width: 60,
+                  height: 100,
+                  width: 100,
                   borderRadius: '50%',
                   bgcolor: '#DDEB9D',
                   color: '#143D60',
-                  fontSize: 36,
+                  fontSize: 44,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  mb: 1,
                 }}
               >
                 +
               </Box>
-              <Typography variant="h6" align="center">
+              <Typography variant="h6" align="center" sx={{ padding: '16px' }}>
                 Add Customer
               </Typography>
             </Card>
@@ -197,7 +196,7 @@ export default function Home() {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      margin: '12px auto 0 auto',
+                      margin: '24px auto 0 auto',
                     }}
                   >
                     {item.name[0].toUpperCase()}
