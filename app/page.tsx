@@ -69,7 +69,7 @@ export default function Home() {
         <>
           <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 3 }}>
             <Box
-              sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer', border: '1px dotted #143D60', borderRadius: '8px', padding: '6px 12px', bgcolor: 'white' }}
+              sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer', border: '1px dashed #143D60', borderRadius: '8px', padding: '6px 12px', bgcolor: 'white' }}
               onClick={handleAdd}
             >
               <Box
@@ -182,30 +182,23 @@ export default function Home() {
                       {truncate(item.name, 20)}
                     </Typography>
 
-                    <Box sx={{ overflowX: 'auto', mt: 2 }}>
-  <table style={{ width: '100%', border: '1px solid red', borderCollapse: 'collapse' }}>
-    <thead>
-      <tr>
-        {['Age', 'Gender', 'Mobile', 'Gmail'].map((heading) => (
-          <th
-            key={heading}
-            style={{
-              border: '1px solid red',
-              textAlign: 'center',
-              padding: '8px',
-              color: '#143D60',
-            }}
-          >
-            {heading}
-          </th>
-        ))}
-      </tr>
-    </thead>
+<Box sx={{ overflowX: 'auto', mt: 2 }}>
+  <table style={{ width: '100%', borderCollapse: 'collapse' }}>
     <tbody>
       <tr>
+        <td style={{ border: '1px solid red', textAlign: 'center', padding: '8px', fontWeight: 'bold' }}>Age</td>
         <td style={{ border: '1px solid red', textAlign: 'left', padding: '8px' }}>{item.age}</td>
+      </tr>
+      <tr>
+        <td style={{ border: '1px solid red', textAlign: 'center', padding: '8px', fontWeight: 'bold' }}>Gender</td>
         <td style={{ border: '1px solid red', textAlign: 'left', padding: '8px' }}>{item.gender}</td>
+      </tr>
+      <tr>
+        <td style={{ border: '1px solid red', textAlign: 'center', padding: '8px', fontWeight: 'bold' }}>Mobile</td>
         <td style={{ border: '1px solid red', textAlign: 'left', padding: '8px' }}>{item.mobile}</td>
+      </tr>
+      <tr>
+        <td style={{ border: '1px solid red', textAlign: 'center', padding: '8px', fontWeight: 'bold' }}>Gmail</td>
         <td style={{ border: '1px solid red', textAlign: 'left', padding: '8px' }}>
           {truncate(item.gmail, 25)}
         </td>
@@ -213,6 +206,7 @@ export default function Home() {
     </tbody>
   </table>
 </Box>
+
 
                   </CardContent>
                 </Card>
