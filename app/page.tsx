@@ -53,6 +53,7 @@ export default function Home() {
   }, [dispatch]);
 
   return (
+    <>
     <Box sx={{ padding: 3 }}>
       <Typography variant="h4" align="center" sx={{ color: '#5F8B4C', fontStyle: 'italic', marginBottom: 4 }}>
         Customer List
@@ -216,9 +217,11 @@ export default function Home() {
                 </CardContent>
               </Card>
             </Grid>
+      
           ))}
         </Grid>
       )}
     </Box>
+    </>
   );
 }
