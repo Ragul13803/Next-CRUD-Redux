@@ -80,173 +80,177 @@ export default function Home() {
           No Customers Available
         </Typography>
       ) : (
-        <>
-          <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
-            <Box
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                cursor: 'pointer',
-                border: '1px dashed #143D60',
-                borderRadius: '10px',
-                padding: '6px 12px',
-                bgcolor: 'white',
-              }}
+        <Grid container spacing={2}>
+          {/* Add Customer Card */}
+          <Grid item xs={12} sm={6} md={4} lg={3}>
+            <Card
               onClick={handleAdd}
+              sx={{
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                border: '2px dashed #143D60',
+                borderRadius: '12px',
+                bgcolor: '#fff',
+                color: '#143D60',
+                cursor: 'pointer',
+                transition: '0.3s',
+                '&:hover': {
+                  bgcolor: '#F3FBE1',
+                },
+              }}
             >
               <Box
                 sx={{
-                  height: 24,
-                  width: 24,
+                  height: 60,
+                  width: 60,
                   borderRadius: '50%',
                   bgcolor: '#DDEB9D',
                   color: '#143D60',
-                  fontSize: 24,
+                  fontSize: 36,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  mr: 1,
+                  mb: 1,
                 }}
               >
                 +
               </Box>
-              <Typography variant="body1" color="#143D60">
+              <Typography variant="h6" align="center">
                 Add Customer
               </Typography>
-            </Box>
-          </Box>
+            </Card>
+          </Grid>
 
-          <Grid container spacing={2}>
-            {customers?.map((item) => (
-              <Grid item xs={12} sm={6} md={4} lg={3} key={item._id}>
-                <Card
-                  sx={{
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    border: '1px solid #D1D1D1',
-                    borderRadius: '12px',
-                    position: 'relative',
-                    bgcolor: '#DDEB9D',
-                    color: '#143D60',
+          {/* Customer Cards */}
+          {customers?.map((item) => (
+            <Grid item xs={12} sm={6} md={4} lg={3} key={item._id}>
+              <Card
+                sx={{
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  border: '1px solid #D1D1D1',
+                  borderRadius: '12px',
+                  position: 'relative',
+                  bgcolor: '#DDEB9D',
+                  color: '#143D60',
+                }}
+              >
+                <IconButton
+                  onClick={(e) => handleMenuOpen(e, item._id)}
+                  sx={{ position: 'absolute', top: 8, right: 8 }}
+                >
+                  ⋮
+                </IconButton>
+
+                <Menu
+                  anchorEl={menuAnchorEls[item._id]}
+                  open={Boolean(menuAnchorEls[item._id])}
+                  onClose={() => handleMenuClose(item._id)}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
                   }}
                 >
-                  <IconButton
-                    onClick={(e) => handleMenuOpen(e, item._id)}
-                    sx={{ position: 'absolute', top: 8, right: 8 }}
-                  >
-                    ⋮
-                  </IconButton>
-
-                  <Menu
-                    anchorEl={menuAnchorEls[item._id]}
-                    open={Boolean(menuAnchorEls[item._id])}
-                    onClose={() => handleMenuClose(item._id)}
-                    anchorOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
-                    }}
-                    transformOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
+                  <MenuItem
+                    onClick={() => {
+                      handleEdit(item._id);
+                      handleMenuClose(item._id);
                     }}
                   >
-                    <MenuItem
-                      onClick={() => {
-                        handleEdit(item._id);
-                        handleMenuClose(item._id);
-                      }}
-                    >
-                      Edit
-                    </MenuItem>
-                    <MenuItem
-                      onClick={() => {
-                        handleDelete(item._id);
-                        handleMenuClose(item._id);
-                      }}
-                    >
-                      Delete
-                    </MenuItem>
-                  </Menu>
+                    Edit
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => {
+                      handleDelete(item._id);
+                      handleMenuClose(item._id);
+                    }}
+                  >
+                    Delete
+                  </MenuItem>
+                </Menu>
 
-                  <CardContent 
+                <CardContent
+                  sx={{
+                    p: '10px 18px !important',
+                    '&:last-child': {
+                      pb: '10px !important',
+                    },
+                  }}
+                >
+                  <Box
                     sx={{
-                          p: '10px 14px !important', // override all padding with !important
-                          '&:last-child': {
-                            pb: '10px !important', // override the bottom padding applied to the last-child
-                          },
-                        }}
-                    >
-                    {/* Avatar */}
-                    <Box
-                      sx={{
-                        height: 80,
-                        width: 80,
-                        borderRadius: '50%',
-                        bgcolor: 'white',
-                        color: '#5F8B4C',
-                        fontSize: 24,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        margin: '12px auto 0 auto',
-                      }}
-                    >
-                      {item.name[0].toUpperCase()}
-                    </Box>
+                      height: 80,
+                      width: 80,
+                      borderRadius: '50%',
+                      bgcolor: 'white',
+                      color: '#5F8B4C',
+                      fontSize: 26,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      margin: '12px auto 0 auto',
+                    }}
+                  >
+                    {item.name[0].toUpperCase()}
+                  </Box>
 
-                    {/* Name */}
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        fontWeight: 'bold',
-                        color: '#143D60',
-                        whiteSpace: 'nowrap',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                        textAlign: 'center',
-                      }}
-                    >
-                      {truncate(item.name, 25)}
-                    </Typography>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      fontWeight: 'bold',
+                      color: '#143D60',
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      textAlign: 'center',
+                    }}
+                  >
+                    {truncate(item.name, 25)}
+                  </Typography>
 
-                    {/* Info section left-aligned */}
-                    <Grid container spacing={0}>
-                      <Grid item xs={12}>
-                        <Typography variant="body2">
-                          <strong>Age:</strong> {item.age}
-                        </Typography>
-                      </Grid>
-                      <Grid item xs={12}>
-                        <Typography variant="body2">
-                          <strong>Gender:</strong> {item.gender}
-                        </Typography>
-                      </Grid>
-                      <Grid item xs={12}>
-                        <Typography variant="body2">
-                          <strong>Mobile:</strong> {item.mobile}
-                        </Typography>
-                      </Grid>
-                      <Grid item xs={12}>
-                        <Typography
-                          variant="body2"
-                          sx={{
-                            whiteSpace: 'nowrap',
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                          }}
-                        >
-                          <strong>Gmail:</strong> {truncate(item.gmail, 25)}
-                        </Typography>
-                      </Grid>
+                  <Grid container spacing={0}>
+                    <Grid item xs={12}>
+                      <Typography variant="body2">
+                        <strong>Age:</strong> {item.age}
+                      </Typography>
                     </Grid>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </>
+                    <Grid item xs={12}>
+                      <Typography variant="body2">
+                        <strong>Gender:</strong> {item.gender}
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Typography variant="body2">
+                        <strong>Mobile:</strong> {item.mobile}
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          whiteSpace: 'nowrap',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                        }}
+                      >
+                        <strong>Gmail:</strong> {truncate(item.gmail, 25)}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
       )}
     </Box>
   );
