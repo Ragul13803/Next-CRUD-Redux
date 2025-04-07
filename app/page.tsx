@@ -1,6 +1,16 @@
 'use client';
 
-import { Box, Typography, CircularProgress, Grid, Card, CardContent, IconButton, Menu, MenuItem, } from '@mui/material';
+import {
+  Box,
+  Typography,
+  CircularProgress,
+  Grid,
+  Card,
+  CardContent,
+  IconButton,
+  Menu,
+  MenuItem,
+} from '@mui/material';
 import { useRouter } from 'next/navigation';
 import { useAppDispatch, useAppSelector } from './Redux/store';
 import { useEffect, useState } from 'react';
@@ -52,7 +62,11 @@ export default function Home() {
 
   return (
     <Box sx={{ padding: 3 }}>
-      <Typography variant="h4" align="center" sx={{ color: '#5F8B4C', fontStyle: 'italic', marginBottom: 4 }}>
+      <Typography
+        variant="h4"
+        align="center"
+        sx={{ color: '#5F8B4C', fontStyle: 'italic', marginBottom: 4 }}
+      >
         Customer List
       </Typography>
 
@@ -69,7 +83,15 @@ export default function Home() {
         <>
           <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 3 }}>
             <Box
-              sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer', border: '1px dashed #143D60', borderRadius: '12px', padding: '6px 12px', bgcolor: 'white' }}
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                cursor: 'pointer',
+                border: '1px dashed #143D60',
+                borderRadius: '10px',
+                padding: '6px 12px',
+                bgcolor: 'white',
+              }}
               onClick={handleAdd}
             >
               <Box
@@ -149,7 +171,8 @@ export default function Home() {
                     </MenuItem>
                   </Menu>
 
-                  <CardContent sx={{ textAlign: 'center' }}>
+                  <CardContent>
+                    {/* Avatar */}
                     <Box
                       sx={{
                         height: 80,
@@ -157,7 +180,7 @@ export default function Home() {
                         borderRadius: '50%',
                         bgcolor: 'white',
                         color: '#5F8B4C',
-                        fontSize: 28,
+                        fontSize: 24,
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -168,6 +191,7 @@ export default function Home() {
                       {item.name[0].toUpperCase()}
                     </Box>
 
+                    {/* Name */}
                     <Typography
                       variant="h6"
                       sx={{
@@ -177,37 +201,42 @@ export default function Home() {
                         whiteSpace: 'nowrap',
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
+                        textAlign: 'center',
                       }}
                     >
                       {truncate(item.name, 20)}
                     </Typography>
 
-<Box sx={{ overflowX: 'auto', mt: 2 }}>
-  <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-    <tbody>
-      <tr>
-        <td style={{ textAlign: 'left', padding: '8px', fontWeight: 'bold' }}>Age :</td>
-        <td style={{ textAlign: 'left', padding: '8px' }}>{item.age}</td>
-      </tr>
-      <tr>
-        <td style={{ textAlign: 'left', padding: '8px', fontWeight: 'bold' }}>Gender :</td>
-        <td style={{ textAlign: 'left', padding: '8px' }}>{item.gender}</td>
-      </tr>
-      <tr>
-        <td style={{ textAlign: 'left', padding: '8px', fontWeight: 'bold' }}>Mobile :</td>
-        <td style={{ textAlign: 'left', padding: '8px' }}>{item.mobile}</td>
-      </tr>
-      <tr>
-        <td style={{ textAlign: 'left', padding: '8px', fontWeight: 'bold' }}>Gmail :</td>
-        <td style={{ textAlign: 'left', padding: '8px' }}>
-          {truncate(item.gmail, 20)}
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</Box>
-
-
+                    {/* Info section left-aligned */}
+                    <Grid container spacing={1}>
+                      <Grid item xs={12}>
+                        <Typography variant="body2">
+                          <strong>Age:</strong> {item.age}
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Typography variant="body2">
+                          <strong>Gender:</strong> {item.gender}
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Typography variant="body2">
+                          <strong>Mobile:</strong> {item.mobile}
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            whiteSpace: 'nowrap',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                          }}
+                        >
+                          <strong>Gmail:</strong> {truncate(item.gmail, 25)}
+                        </Typography>
+                      </Grid>
+                    </Grid>
                   </CardContent>
                 </Card>
               </Grid>
