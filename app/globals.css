@@ -17,7 +17,8 @@ body {
 }
 
 body {
-  color: var(--foreground);
+  color: '#143D60';
+  bgcolor: '#DDEB9D';
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
