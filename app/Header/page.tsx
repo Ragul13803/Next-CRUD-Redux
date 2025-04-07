@@ -61,8 +61,8 @@ function Header() {
   sx={{
     display: { xs: 'flex', md: 'none' },
     alignItems: 'center',
-    mr: 1,
-    width: '40px', // Fixed width so it doesn't shift
+    // mr: 1,
+    width: '20px', // Fixed width so it doesn't shift
     justifyContent: 'center',
   }}
 >
@@ -70,13 +70,9 @@ function Header() {
     onClick={toggleDrawer(true)}
     sx={{ color: '#143D60', p: 0 }}
   >
-    <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
       ≡
-    </Typography>
   </IconButton>
 </Box>
-
-
             {/* CUSTOMERS Logo */}
             <Link
               href="/"
@@ -103,7 +99,7 @@ function Header() {
 
             {/* Avatar */}
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <IconButton onClick={handleOpenUserMenu} sx={{ m: 0 }}>
                 <Avatar alt="Remy Sharp" src="/favicon.ico" />
               </IconButton>
             </Tooltip>
