@@ -1,16 +1,6 @@
 'use client';
 
-import {
-  Box,
-  Typography,
-  CircularProgress,
-  Grid,
-  Card,
-  CardContent,
-  IconButton,
-  Menu,
-  MenuItem,
-} from '@mui/material';
+import { Box, Typography, CircularProgress, Grid, Card, CardContent, IconButton, Menu, MenuItem, } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import { useAppDispatch, useAppSelector } from './Redux/store';
 import { useEffect, useState } from 'react';
@@ -100,7 +90,7 @@ export default function Home() {
                 '&:hover': {
                   bgcolor: '#F3FBE1',
                 },
-                padding: '30px 20px 10px 20px',
+                padding: '40px 20px 20px 20px',
               }}
             >
               <Box
