@@ -81,6 +81,7 @@ function Header() {
                 color: '#143D60',
                 textDecoration: 'none',
                 fontSize: '20px',
+                margin:'0 4px'
               }}
             >
               CUSTOMERS
