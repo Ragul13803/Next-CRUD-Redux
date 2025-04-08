@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import Styles from '@/app/page.module.css';
 import { Box, TextField, Button, Snackbar, Alert, Card, CardContent, Typography } from '@mui/material';
 
 function Contact() {
@@ -30,10 +29,11 @@ function Contact() {
     <>
       <Card
         sx={{
-          width: 250,
+          width: 350,
+          height: 400,
           mx: 'auto',
-          mt: 5,
-          p: 2,
+          mt: 4,
+          p: 1,
           boxShadow: 3,
           bgcolor: '#DDEB9D',
           color: '#143D60',
