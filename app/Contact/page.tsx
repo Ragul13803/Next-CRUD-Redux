@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Box, TextField, Button, Snackbar, Alert, Card, CardContent, Typography } from '@mui/material';
 
@@ -102,7 +104,7 @@ function Contact() {
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         sx={{
           '& .MuiSnackbar-root': {
-            top: '20px', // Adjusts the top position to add 20px margin
+            top: '20px', // Positions the Snackbar 20px from the top
           },
         }}
       >
