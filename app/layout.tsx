@@ -17,24 +17,26 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode; }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`} 
+      <body
+        className={`${geistSans.variable} ${geistMono.variable}`}
         style={{
-          backgroundImage: "url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdjRpYmQxdWQzNzh0bTZmNmJzOWZzZGtobmZtb2xlNHFqanFyYzJvOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JSCJORaPeVOj1ekgyi/giphy.gif')",
+          display: "flex",        // Enable Flexbox
+          flexDirection: "column", // Stack children vertically
+          minHeight: "100vh",      // Full viewport height
+          backgroundImage:
+            "url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdjRpYmQxdWQzNzh0bTZmNmJzOWZzZGtobmZtb2xlNHFqanFyYzJvOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JSCJORaPeVOj1ekgyi/giphy.gif')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          minHeight: "100vh",
         }}
-        >
+      >
         <Header />
-        <Provider store={store}>{children}</Provider>
+        <Provider store={store}>
+          <main style={{ flex: 1 }}>{children}</main> {/* Pushes footer to the bottom */}
+        </Provider>
         <Footer />
       </body>
     </html>
