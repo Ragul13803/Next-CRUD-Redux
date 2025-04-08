@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useState } from 'react';
 import { Box, TextField, Button, Snackbar, Alert, Card, CardContent, Typography } from '@mui/material';
 
@@ -79,8 +77,18 @@ function Contact() {
               rows={4}
               fullWidth
               InputLabelProps={{ style: { color: '#143D60' } }}
+              sx={{ mt: 2.5 }} // 20px top margin
             />
-            <Button type="submit" variant="contained" sx={{ bgcolor: '#143D60', color: '#fff', '&:hover': { bgcolor: '#143D60' }, borderRadius: '8px', }}>
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{
+                bgcolor: '#143D60',
+                color: '#fff',
+                '&:hover': { bgcolor: '#143D60' },
+                borderRadius: '8px',
+              }}
+            >
               Send Message
             </Button>
           </Box>
@@ -92,6 +100,11 @@ function Contact() {
         autoHideDuration={3000}
         onClose={() => setOpen(false)}
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        sx={{
+          '& .MuiSnackbar-root': {
+            top: '20px', // Adjusts the top position to add 20px margin
+          },
+        }}
       >
         <Alert severity="success" onClose={() => setOpen(false)} sx={{ width: '100%' }}>
           Message sent successfully!
