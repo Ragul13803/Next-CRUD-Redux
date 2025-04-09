@@ -30,7 +30,7 @@ function Contact() {
       <Card
         sx={{
           width: 350,
-          height: 400,
+          height: 450,
           mx: 'auto',
           mt: 4,
           p: 1,
