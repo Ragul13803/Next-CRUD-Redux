@@ -190,7 +190,7 @@ export default function Home() {
                       margin: '24px auto 0 auto',
                     }}
                   >
-                    {item.name[0].toUpperCase()}
+                    {item.name[0]?.toUpperCase()}
                   </Box>
 
                   <Typography
