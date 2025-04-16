@@ -65,7 +65,7 @@ export default function Home() {
           <CircularProgress sx={{ color: '#5F8B4C', marginRight: 2 }} />
           <Typography variant="h5">Loading...</Typography>
         </Box>
-      ) : customers.length === 0 ? (
+      ) : customers?.length === 0 ? (
         <Typography align="center" sx={{ fontWeight: 'bold', fontSize: '18px', color: '#5F8B4C', mt: 4 }}>
           No Customers Available
         </Typography>
