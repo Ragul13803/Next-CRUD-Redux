@@ -83,7 +83,7 @@ export default function Home() {
                   padding: '40px 20px 20px 20px',
                 }}
               >
-                <Skeleton variant="circle" width={80} height={80} sx={{ bgcolor: '#DDEB9D', marginBottom: 2 }} />
+                <Skeleton variant="circular" width={80} height={80} sx={{ bgcolor: '#DDEB9D', marginBottom: 2 }} />
                 <Skeleton width="60%" height={30} sx={{ bgcolor: '#DDEB9D' }} />
               </Card>
             </Grid>
