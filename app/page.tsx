@@ -106,7 +106,7 @@ export default function Home() {
                 >
                   <Skeleton variant="rectangular" width={40} height={40} sx={{ position: 'absolute', top: 8, right: 8 }} />
                   <CardContent sx={{ p: '16px !important', '&:last-child': { pb: '16px !important' } }}>
-                    <Skeleton variant="circle" width={80} height={80} sx={{ margin: '24px auto' }} />
+                    <Skeleton variant="circular" width={80} height={80} sx={{ margin: '24px auto' }} />
                     <Skeleton width="60%" height={20} sx={{ bgcolor: '#143D60', marginBottom: 1 }} />
                     <Skeleton width="50%" height={18} sx={{ bgcolor: '#143D60', marginBottom: 1 }} />
                     <Skeleton width="60%" height={18} sx={{ bgcolor: '#143D60', marginBottom: 1 }} />
