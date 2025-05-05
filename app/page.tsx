@@ -1,11 +1,10 @@
 'use client';
 
-import { Box, Typography, CircularProgress, Grid, Card, CardContent, IconButton, Menu, MenuItem, } from '@mui/material';
+import { Box, Typography, Grid, Card, CardContent, IconButton, Menu, MenuItem, Skeleton } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import { useAppDispatch, useAppSelector } from './Redux/store';
 import { useEffect, useState } from 'react';
 import { deleteCustomer, getallCustomers } from './Redux/Customers/thunk';
-// import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 export default function Home() {
   const router = useRouter();
@@ -62,8 +61,61 @@ export default function Home() {
 
       {loading ? (
         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '40vh' }}>
-          <CircularProgress sx={{ color: '#5F8B4C', marginRight: 2 }} />
-          <Typography variant="h5">Loading...</Typography>
+          <Grid container spacing={2}>
+            {/* Skeleton for Add Customer Card */}
+            <Grid item xs={12} sm={6} md={4} lg={3}>
+              <Card
+                sx={{
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  border: '2px dashed #143D60',
+                  borderRadius: '12px',
+                  bgcolor: '#fff',
+                  color: '#143D60',
+                  cursor: 'pointer',
+                  transition: '0.3s',
+                  '&:hover': {
+                    bgcolor: '#F3FBE1',
+                  },
+                  padding: '40px 20px 20px 20px',
+                }}
+              >
+                <Skeleton variant="circle" width={80} height={80} sx={{ bgcolor: '#DDEB9D', marginBottom: 2 }} />
+                <Skeleton width="60%" height={30} sx={{ bgcolor: '#DDEB9D' }} />
+              </Card>
+            </Grid>
+
+            {/* Skeleton for Customer Cards */}
+            {Array.from({ length: 4 }).map((_, index) => (
+              <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+                <Card
+                  sx={{
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    border: '1px solid #D1D1D1',
+                    borderRadius: '12px',
+                    position: 'relative',
+                    bgcolor: '#DDEB9D',
+                    color: '#143D60',
+                  }}
+                >
+                  <Skeleton variant="rectangular" width={40} height={40} sx={{ position: 'absolute', top: 8, right: 8 }} />
+                  <CardContent sx={{ p: '16px !important', '&:last-child': { pb: '16px !important' } }}>
+                    <Skeleton variant="circle" width={80} height={80} sx={{ margin: '24px auto' }} />
+                    <Skeleton width="60%" height={20} sx={{ bgcolor: '#143D60', marginBottom: 1 }} />
+                    <Skeleton width="50%" height={18} sx={{ bgcolor: '#143D60', marginBottom: 1 }} />
+                    <Skeleton width="60%" height={18} sx={{ bgcolor: '#143D60', marginBottom: 1 }} />
+                    <Skeleton width="50%" height={18} sx={{ bgcolor: '#143D60', marginBottom: 1 }} />
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
         </Box>
       ) : customers?.length === 0 ? (
         <Typography align="center" sx={{ fontWeight: 'bold', fontSize: '18px', color: '#5F8B4C', mt: 4 }}>
