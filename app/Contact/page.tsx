@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Box, TextField, Button, Snackbar, Alert, Card, CardContent, Typography } from '@mui/material';
+import emailjs from "emailjs-com";
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -20,10 +21,31 @@ function Contact() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    setOpen(true);
-    setFormData({ name: '', gmail: '', message: '' });
-  };
+  e.preventDefault();
+
+  emailjs.send(
+  "Ragul9794",
+  "template_91nueto",
+  {
+    user_name: formData.name,
+    user_email: formData.gmail,
+    user_message: formData.message,
+  },
+  "gOMXPK3Nibmi6GJG_"
+).then(
+      (response) => {
+        console.log("SUCCESS!", response.status, response.text);
+        setOpen(true);
+        setFormData({ name: "", gmail: "", message: "" });
+      },
+      (err) => {
+        console.error("FAILED...", err);
+        alert("Failed to send message");
+      }
+    );
+};
+
+
 
   return (
     <>
@@ -91,7 +113,7 @@ function Contact() {
                 borderRadius: '8px',
               }}
             >
-              Send Message
+              Send Us Message
             </Button>
           </Box>
         </CardContent>
@@ -102,11 +124,7 @@ function Contact() {
         autoHideDuration={3000}
         onClose={() => setOpen(false)}
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        sx={{
-          '& .MuiSnackbar-root': {
-            top: '20px', // Positions the Snackbar 20px from the top
-          },
-        }}
+        sx={{  marginTop: '50px' }}
       >
         <Alert severity="success" onClose={() => setOpen(false)} sx={{ width: '100%' }}>
           Message sent successfully!
